@@ -34,6 +34,18 @@ public class TestController {
 		outPut.setSuccess("true");
 		return outPut;
 	}
+	
+	@PostMapping("/addUserQ")
+	public OutPut addUserQ(@RequestBody User user) {
+		int id=user.getId();
+		String name= user.getName();
+		userRepository.saveQ(id,name);
+		OutPut outPut = new OutPut();
+		outPut.setId(user.getId());
+		outPut.setName(user.getName());
+		outPut.setSuccess("true");
+		return outPut;
+	}
 
 	@PostMapping("/addBook")
 	public OutPut addBook(@RequestBody Book book) {
@@ -45,9 +57,9 @@ public class TestController {
 		return outPut;
 	}
 
-	@GetMapping("/getUsers")
+	@GetMapping("/getUsers1")
 	public List<User> getUsers() {
-		List<User> userList = userRepository.findAll();
+		List<User> userList = userRepository.findAllUsers();
 		return userList;
 	}
 

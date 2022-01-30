@@ -37,7 +37,7 @@ public class UserDbConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(EntityManagerFactoryBuilder builder,
 			@Qualifier("datasource") DataSource dataSource) {
 		Map<String, Object> properties = new HashMap<>();
-		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.hbm2ddl.auto", "none");
 		properties.put("spring.jpa.properties.hibernate.dialect", "org.hibernate.dialect.MYSQLDialect");
 		return builder.dataSource(dataSource).properties(properties).packages("com.multipledatasource.model.user")
 				.persistenceUnit("User").build();
